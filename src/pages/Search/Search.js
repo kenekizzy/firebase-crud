@@ -13,10 +13,7 @@ const Search = () => {
     let search = query.get("name")
 
     useEffect(() => {
-        searchData()
-    }, [search])
-
-    const searchData = () => {
+      const searchData = () => {
         fireDb.child("contacts").orderByChild("name").equalTo(`${search}`).on("value", (snapshot) => {
             if(snapshot.val()){
                 const data = snapshot.val()
@@ -24,6 +21,11 @@ const Search = () => {
             }
         })
     }
+
+        searchData()
+    }, [search])
+
+    
 
   return (
     <div style={{marginTop: "100px"}}>
